@@ -1,8 +1,5 @@
-﻿using AutoFixture.AutoMoq;
-using AutoFixture;
+﻿using Toro.Core.Entities;
 using Toro.Core.Repositories;
-using Moq;
-using Toro.Core.Entities;
 
 namespace Toro.Tests.Core.Repositories
 {

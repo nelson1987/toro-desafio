@@ -26,37 +26,4 @@ namespace Toro.Tests.Core.Features.Transfers.Deposit
             Assert.Throws<ArgumentException>(() => _bankAccount.Deposit(0));
         }
     }
-
-    public class CreateMovementCommandTests
-    {
-        [Fact]
-        public async Task Good_Path()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class CreateMovementOriginTests
-    {
-        [Fact]
-        public async Task Good_Path()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class CreateMovementTargetTests
-    {
-        [Fact]
-        public async Task Good_Path()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    public class MovementTypeTests
-    {
-        [Fact]
-        public async Task Good_Path()
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

@@ -1,7 +1,4 @@
-﻿using AutoFixture;
-using AutoFixture.AutoMoq;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
 using Toro.Api.Controllers;
 using Toro.Core.Entities;
 using Toro.Core.Features.Orders;
