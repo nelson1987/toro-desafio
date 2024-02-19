@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Toro.Core.Entities;
-using Toro.Core.Repositories;
 
 namespace Toro.Api.Controllers;
 
@@ -9,36 +8,21 @@ namespace Toro.Api.Controllers;
 public class TrendController : ControllerBase
 {
     private readonly TrendRepository _trendRepository;
-    private readonly AccountRepository _accountRepository;
     public TrendController()
     {
         _trendRepository = new TrendRepository();
-        _accountRepository = new AccountRepository();
     }
 
     [HttpGet("/trends")]
-    public async Task<IActionResult> Trends()
+    public async Task<IActionResult> Get(int size = 5)
     {
-        var bestTrends = _trendRepository.BestTrend(3);
+        var bestTrends = await _trendRepository.BestTrend(size);
         List<TrendQueryResponse> response = bestTrends.Select(x => new TrendQueryResponse()
         {
             CurrentPrice = x.CurrentPrice,
             Symbol = x.Symbol
         }).ToList();
         return StatusCode(200, response);
-    }
-    [HttpPost("/orders")]
-    public async Task<IActionResult> Order(CreateOrderCommand command)
-    {
-        var trend = await _trendRepository.GetBySymbol(command.Symbol);
-        if (trend == null) { return NotFound(); }
-
-        var user = await _accountRepository.GetAccountBy(x => x.Account == "300123");
-        if (user == null) { return NotFound(); }
-
-        user.BuyOrder(trend!, command.Amount);
-
-        return StatusCode(201);
     }
 }
 public record CreateOrderCommand
@@ -52,7 +36,12 @@ public record TrendQueryResponse
     public string Symbol { get; set; }
     public decimal CurrentPrice { get; set; }
 }
-public class TrendRepository
+public interface ITrendRepository
+{
+    Task<List<Trend>> BestTrend(int listSize = 5);
+    Task<Trend?> GetBySymbol(string symbol);
+}
+public class TrendRepository : ITrendRepository
 {
     private readonly List<Trend> trends = new List<Trend>()
     {
@@ -62,7 +51,7 @@ public class TrendRepository
         TrendBuilder.Create("SANB11", 40.77M, 7),
         TrendBuilder.Create("TORO4", 115.98M, 6),
     };
-    public List<Trend> BestTrend(int listSize)
+    public async Task<List<Trend>> BestTrend(int listSize = 5)
     {
         return trends.OrderByDescending(x => x.Buys).Take(listSize).ToList();
     }
