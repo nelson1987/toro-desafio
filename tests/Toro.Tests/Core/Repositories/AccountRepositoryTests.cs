@@ -9,7 +9,6 @@ namespace Toro.Tests.Core.Repositories
     public class AccountRepositoryTests
     {
         private readonly IFixture _fixture = new Fixture().Customize(new AutoMoqCustomization());
-
         private readonly Mock<AccountRepository> _repository;
         private readonly BankAccount _account;
 
@@ -26,14 +25,7 @@ namespace Toro.Tests.Core.Repositories
         [Fact]
         public async Task Good_Path()
         {
-            //_repository.GetAccountBy
-            //_repository.GetAccountBy(x=>x.Account)
             throw new NotImplementedException();
         }
-        /*
-         
-    Task<BankAccount?> GetAccountBy(Func<BankAccount, bool> filter);
-    Task Update(BankAccount conta);
-         */
     }
 }
