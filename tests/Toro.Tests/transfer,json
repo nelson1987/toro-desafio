@@ -1,0 +1,14 @@
+{
+    "event": "TRANSFER",
+    "target": {
+        "bank": "352", // Banco Toro
+        "branch": "0001", // Única agenda, sempre 0001
+        "account": "300123", // Conta do usuário na Toro (unica por usuário)
+    },
+    "origin": {
+        "bank": "033", // Banco de origem 
+        "branch": "03312", // Agencia de origem
+        "cpf": "45358996060" // CPF do remetente
+    },
+    "amount": 1000 // R$ 1000,00 reais
+}

@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Toro.Api\Toro.Api.csproj" />
+  </ItemGroup>
+
 </Project>
