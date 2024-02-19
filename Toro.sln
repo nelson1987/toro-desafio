@@ -3,12 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{23374B69-3B5E-4194-A54C-6350DF9CE2E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3262E6D9-4D45-49FF-9FA8-9EF93C60B938}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toro.Api", "src\Toro.Api\Toro.Api.csproj", "{6963215D-F486-4425-80ED-0199DA2EFF6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toro.Core", "src\Toro.Core\Toro.Core.csproj", "{D836D73F-B468-42E8-82CE-1A6B7CCC67ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toro.Tests", "tests\Toro.Tests\Toro.Tests.csproj", "{B11652D5-D0E6-4FA7-AA25-1909F38224F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6963215D-F486-4425-80ED-0199DA2EFF6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6963215D-F486-4425-80ED-0199DA2EFF6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6963215D-F486-4425-80ED-0199DA2EFF6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6963215D-F486-4425-80ED-0199DA2EFF6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D836D73F-B468-42E8-82CE-1A6B7CCC67ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D836D73F-B468-42E8-82CE-1A6B7CCC67ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D836D73F-B468-42E8-82CE-1A6B7CCC67ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D836D73F-B468-42E8-82CE-1A6B7CCC67ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11652D5-D0E6-4FA7-AA25-1909F38224F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11652D5-D0E6-4FA7-AA25-1909F38224F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11652D5-D0E6-4FA7-AA25-1909F38224F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11652D5-D0E6-4FA7-AA25-1909F38224F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6963215D-F486-4425-80ED-0199DA2EFF6D} = {23374B69-3B5E-4194-A54C-6350DF9CE2E8}
+		{D836D73F-B468-42E8-82CE-1A6B7CCC67ED} = {23374B69-3B5E-4194-A54C-6350DF9CE2E8}
+		{B11652D5-D0E6-4FA7-AA25-1909F38224F6} = {3262E6D9-4D45-49FF-9FA8-9EF93C60B938}
 	EndGlobalSection
 EndGlobal
