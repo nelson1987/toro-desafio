@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Toro.Core;
+namespace Toro.Core.Features.Transfers.Deposit;
 
 public record CreateMovementCommand
 {

@@ -1,4 +1,4 @@
-﻿namespace Toro.Core;
+﻿namespace Toro.Core.Features.Transfers.Deposit;
 
 public class BankAccount
 {
@@ -9,6 +9,7 @@ public class BankAccount
 
     public void Deposit(decimal amount)
     {
+        if (amount <= 0) throw new ArgumentException("Amount have been greater than 0");
         Amount += amount;
     }
 }

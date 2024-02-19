@@ -1,17 +1,17 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
-using Toro.Core;
+using Toro.Core.Features.Transfers.Deposit;
 
 namespace Toro.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("[Controller]")]
 public class TransferController : ControllerBase
 {
-    private readonly CreateTransferCommandHandler _handler;
+    private readonly ICreateMovementHandler _handler;
     private readonly IValidator<CreateMovementCommand> _validator;
 
-    public TransferController(CreateTransferCommandHandler handler,
+    public TransferController(ICreateMovementHandler handler,
             IValidator<CreateMovementCommand> validator)
     {
         _handler = handler;

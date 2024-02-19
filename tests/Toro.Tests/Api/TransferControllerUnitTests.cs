@@ -1,10 +1,10 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Toro.Api.Controllers;
-using Toro.Core;
+using Toro.Core.Features.Transfers.Deposit;
 using Toro.Core.Repositories;
 
-namespace Toro.Tests;
+namespace Toro.Tests.Api;
 
 public class TransferControllerUnitTests
 {
@@ -16,7 +16,7 @@ public class TransferControllerUnitTests
     {
         _validator = new CreateMovementCommandValidator();
         var repository = new AccountRepository();
-        var handler = new CreateTransferCommandHandler(repository);
+        var handler = new DepositHandler(repository);
         _transferController = new TransferController(handler, _validator);
         _createTransferCommand = new CreateMovementCommand();
     }

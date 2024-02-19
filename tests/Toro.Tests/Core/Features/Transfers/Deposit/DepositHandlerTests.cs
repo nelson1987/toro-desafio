@@ -1,20 +1,20 @@
-﻿using Toro.Core;
+﻿using Toro.Core.Features.Transfers.Deposit;
 using Toro.Core.Repositories;
 
-namespace Toro.Tests;
+namespace Toro.Tests.Core.Features.Transfers.Deposit;
 
-public class CreateTransferCommandHandlerTests
+public class DepositHandlerTests
 {
-    private readonly CreateTransferCommandHandler _handler;
+    private readonly DepositHandler _handler;
     private readonly CreateMovementCommand _createTransferCommand;
 
-    public CreateTransferCommandHandlerTests()
+    public DepositHandlerTests()
     {
         var repository = new AccountRepository();
-        _handler = new CreateTransferCommandHandler(repository);
+        _handler = new DepositHandler(repository);
         _createTransferCommand = new CreateMovementCommand()
         {
-            Event =  MovementType.TRANSFER,
+            Event = MovementType.TRANSFER,
             Target = new CreateMovementTarget
             {
                 Bank = "352",

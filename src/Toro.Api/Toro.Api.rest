@@ -1,0 +1,22 @@
+﻿@Toro.Api_HostAddress = https://localhost:7186
+
+POST {{Toro.Api_HostAddress}}/spb/events
+Content-Type: application/json
+
+{
+    "event": "TRANSFER",
+    "target": 
+    {
+        "bank": "352",
+        "branch": "0001",
+        "account": "300123"
+    },
+    "origin": 
+    {
+        "bank": "033",
+        "branch": "03312",
+        "cpf": "45358996060"
+    },
+    "amount": 1000
+}
+###
