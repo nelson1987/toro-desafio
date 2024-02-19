@@ -2,7 +2,7 @@
 using AutoFixture;
 using Toro.Core.Repositories;
 using Moq;
-using Toro.Core.Features.Transfers.Deposit;
+using Toro.Core.Entities;
 
 namespace Toro.Tests.Core.Repositories
 {

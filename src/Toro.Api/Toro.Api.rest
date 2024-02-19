@@ -20,3 +20,16 @@ Content-Type: application/json
     "amount": 1000
 }
 ###
+GET {{Toro.Api_HostAddress}}/trends
+
+###
+
+POST {{Toro.Api_HostAddress}}/orders
+Content-Type: application/json
+
+{
+    "symbol": "SANB11",
+    "amount": 3
+}
+
+###

@@ -1,4 +1,5 @@
-﻿using Toro.Core.Repositories;
+﻿using Toro.Core.Entities;
+using Toro.Core.Repositories;
 using Toro.Core.Utils;
 
 namespace Toro.Core.Features.Transfers.Deposit;

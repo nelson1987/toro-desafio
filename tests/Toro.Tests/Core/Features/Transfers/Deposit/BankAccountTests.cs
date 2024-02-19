@@ -1,4 +1,4 @@
-﻿using Toro.Core.Features.Transfers.Deposit;
+﻿using Toro.Core.Entities;
 
 namespace Toro.Tests.Core.Features.Transfers.Deposit
 {
