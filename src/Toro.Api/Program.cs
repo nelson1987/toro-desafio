@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Toro.Api.Controllers;
 using Toro.Core.Features.Transfers.Deposit;
 using Toro.Core.Repositories;
+using Toro.Core.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddJsonOptions(opt =>
@@ -14,7 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IValidator<CreateMovementCommand>, CreateMovementCommandValidator>()
                 .AddScoped<ICreateMovementHandler, DepositHandler>()
                 .AddScoped<IAccountRepository, AccountRepository>()
-                .AddScoped<ITrendRepository,TrendRepository>();
+                .AddScoped<ITrendRepository, TrendRepository>()
+                .AddScoped<IMongoContext, MongoContext>();
 
 var app = builder.Build();
 

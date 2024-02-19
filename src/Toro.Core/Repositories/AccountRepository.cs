@@ -1,32 +1,39 @@
-﻿using Toro.Core.Entities;
+﻿using MongoDB.Driver;
+using Toro.Core.Entities;
+using Toro.Core.Utils;
 
 namespace Toro.Core.Repositories;
 
 public interface IAccountRepository
 {
     Task<BankAccount?> GetAccountBy(Func<BankAccount, bool> filter);
-    Task Update(BankAccount conta);
+    Task UpdateAmount(BankAccount conta);
 }
 
 public class AccountRepository : IAccountRepository
 {
-    private readonly List<BankAccount> accounts;
-    public AccountRepository()
+    private readonly IMongoContext _context;
+
+    public AccountRepository(IMongoContext context)
     {
-        accounts = new List<BankAccount>() {
-        new BankAccount() { Document ="45358996060", Account = "300123", Branch = "0001", Amount = 0  }
-        };
+        _context = context;
     }
 
     public async Task<BankAccount?> GetAccountBy(Func<BankAccount, bool> filter)
     {
-        return await Task.FromResult(accounts.FirstOrDefault(filter));
+        return await Task.FromResult(_context.Contas.AsQueryable().FirstOrDefault(filter));
     }
 
     public async Task Update(BankAccount conta)
     {
-        var accountList = accounts;
-        accountList.Remove(accountList.First(x => x.Account == conta.Account));
-        accountList.Add(conta);
+        var filter = Builders<BankAccount>.Filter.Eq(x => x.Account, conta.Account);
+        var update = Builders<BankAccount>.Update.Set(x => x, conta);
+        await _context.Contas.UpdateOneAsync(filter, update);
+    }
+    public async Task UpdateAmount(BankAccount conta)
+    {
+        var filter = Builders<BankAccount>.Filter.Eq(x => x.Account, conta.Account);
+        var update = Builders<BankAccount>.Update.Set(x => x.Amount, conta.Amount);
+        await _context.Contas.UpdateOneAsync(filter, update);
     }
 }

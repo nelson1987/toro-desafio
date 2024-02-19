@@ -1,6 +1,4 @@
-﻿using AutoFixture;
-using AutoFixture.AutoMoq;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Toro.Api.Controllers;
 
 namespace Toro.Tests.Api;
@@ -16,12 +14,6 @@ public class TrendControllerUnitTests
     public TrendControllerUnitTests()
     {
         _trendController = _fixture.Build<TrendController>().Create();
-        //_account = _fixture.Build<BankAccount>()
-        //    .Create();
-        //_repository = _fixture.Freeze<Mock<AccountRepository>>();
-        //_repository
-        //     .Setup(x => x.GetAccountBy(It.IsAny<Func<BankAccount, bool>>()))
-        //     .Returns(Task.FromResult(_account)!);
     }
 
     [Fact]

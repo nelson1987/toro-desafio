@@ -32,7 +32,7 @@ public class DepositHandler : ICreateMovementHandler
         if (conta != null)
         {
             conta.Deposit(command.Amount);
-            await _accountRepository.Update(conta);
+            await _accountRepository.UpdateAmount(conta);
         }
     }
 

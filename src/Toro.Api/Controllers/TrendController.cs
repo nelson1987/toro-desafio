@@ -7,10 +7,11 @@ namespace Toro.Api.Controllers;
 [Route("[Controller]")]
 public class TrendController : ControllerBase
 {
-    private readonly TrendRepository _trendRepository;
-    public TrendController()
+    private readonly ITrendRepository _trendRepository;
+
+    public TrendController(ITrendRepository trendRepository)
     {
-        _trendRepository = new TrendRepository();
+        _trendRepository = trendRepository;
     }
 
     [HttpGet("/trends")]

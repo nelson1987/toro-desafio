@@ -1,5 +1,6 @@
-﻿using Toro.Core.Entities;
-using Toro.Core.Features.Trends;
+﻿using MongoDB.Driver;
+using Toro.Core.Entities;
+using Toro.Core.Utils;
 
 namespace Toro.Api.Controllers;
 public interface ITrendRepository
@@ -9,20 +10,18 @@ public interface ITrendRepository
 }
 public class TrendRepository : ITrendRepository
 {
-    private readonly List<Trend> trends = new List<Trend>()
+    private readonly IMongoContext _context;
+
+    public TrendRepository(IMongoContext context)
     {
-        TrendBuilder.Create("PETR4", 28.44M, 10),
-        TrendBuilder.Create("MGLU3", 25.91M, 9),
-        TrendBuilder.Create("VVAR3", 25.91M, 8),
-        TrendBuilder.Create("SANB11", 40.77M, 7),
-        TrendBuilder.Create("TORO4", 115.98M, 6),
-    };
+        _context = context;
+    }
     public async Task<List<Trend>> BestTrend(int listSize = 5)
     {
-        return trends.OrderByDescending(x => x.Buys).Take(listSize).ToList();
+        return await Task.FromResult(_context.Transacoes.AsQueryable().OrderByDescending(x => x.Buys).Take(listSize).ToList());
     }
     public async Task<Trend?> GetBySymbol(string symbol)
     {
-        return trends.FirstOrDefault(x => x.Symbol == symbol);
+        return await Task.FromResult(_context.Transacoes.AsQueryable().FirstOrDefault(x => x.Symbol == symbol));
     }
 }

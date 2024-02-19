@@ -1,12 +1,18 @@
-﻿namespace Toro.Core.Entities;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace Toro.Core.Entities;
 
 public class BankAccount
 {
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
     public string Branch { get; set; }
     public string Account { get; set; }
     public string Document { get; set; }
     public decimal Amount { get; set; }
-    public List<Order> Orders { get; set; }
+    public List<Order>? Orders { get; set; }
 
     public void Deposit(decimal amount)
     {
